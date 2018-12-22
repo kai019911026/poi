@@ -192,9 +192,8 @@ class Proxy extends EventEmitter {
     if (req.headers['proxy-connection'] && !req.headers['connection']) {
       req.headers['connection'] = req.headers['proxy-connection']
       delete req.headers['proxy-connection']
-    } else if (!req.headers['connection']) {
-      req.headers['connection'] = 'close'
     }
+    req.headers['connection'] = 'close'
     const keepAlive = req.headers['connection'] === 'keep-alive'
 
     // Update kancolle server info
@@ -415,9 +414,8 @@ class Proxy extends EventEmitter {
     if (req.headers['proxy-connection'] && !req.headers['connection']) {
       req.headers['connection'] = req.headers['proxy-connection']
       delete req.headers['proxy-connection']
-    } else if (!req.headers['connection']) {
-      req.headers['connection'] = 'close'
     }
+    req.headers['connection'] = 'close'
     const remoteUrl = url.parse(`https://${req.url}`)
     let remote = null
     switch (config.get('proxy.use')) {
